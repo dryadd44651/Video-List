@@ -1,0 +1,47 @@
+<%- include ('partials/header') %>
+
+
+
+<div class="jumbotron">
+    <h1 class="display-4">Vidzy Application</h1>
+    <p class="lead">This is the list of most popular videos</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="/videos/new" role="button">Add new video</a>
+    </p>
+</div>
+
+<div class="container">
+  <form action=" /videos" method="GET">
+    <input type="text" name="title" value="<%= title %>">
+    <select name="genre" >
+      <option value="All">All</option>
+      <option value="SciFi">SciFi</option>
+      <option value="Fantasy">Fantasy</option>
+      <option value="Drama">Drama</option>
+    </select>
+    <input type="submit" value="search">
+  </form>
+<div class="row">
+  
+  <% videos.forEach(function(video){ %> 
+    <div class="sm-col-3"> <img src="/images/<%= video.image %>" style="width:200px; height:200px;" class="img-thumbnail"/> <div class="caption"><a href="videos/<%= video._id %>"><%= video.title %></a></div> </div>
+<% }); %>
+
+
+<script>
+  let genre = <%- JSON.stringify(genre) %>
+  
+  console.log(genre)
+  $("select option").filter(function() {
+  //may want to use $.trim in here
+  return $(this).text() == genre;
+  }).prop('selected', true);
+
+</script>
+
+</div></div>
+<%- include ('partials/footer') %>
+
+
+
+</script>

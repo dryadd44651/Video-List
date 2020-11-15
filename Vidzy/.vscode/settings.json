@@ -1,0 +1,33 @@
+{
+    "auto-close-tag.activationOnLanguage": [
+
+        "xml",
+        "php",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "plaintext",
+        "markdown",
+        "vue",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "plist"
+    ],
+    "htmlhint.options": {
+        "spec-char-escape": false,
+        "doctype-first": false
+    },
+    "emmet.includeLanguages": {
+        "ejs": "html",
+    },
+    
+    "html.validate.scripts": false
+}

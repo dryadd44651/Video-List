@@ -1,0 +1,73 @@
+https://blog.udemy.com/node-js-tutorial/
+
+C:\Users\dryad\OneDrive\Desktop\program>md \data\db
+
+C:\Users\dryad\OneDrive\Desktop\program>cd C:\Program Files\MongoDB\Server\4.4\bin
+
+C:\Program Files\MongoDB\Server\4.4\bin>mongod
+
+C:\Users\dryad\OneDrive\Desktop\program\node>npm install express-generator -g
+C:\Users\dryad\OneDrive\Desktop\program\node>express --version
+4.16.1
+C:\Users\dryad\OneDrive\Desktop\program\node>express Vidzy(project name)
+C:\Users\dryad\OneDrive\Desktop\program\node>cd Vidzy
+
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>npm install
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>npm install nodemon -g
+//start server
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>nodemon
+open Robo
+connect mongodb with localhost:27017
+create database vidzy
+create collection(table) videos
+insert document(record)
+{
+
+ "title" : "Terminator Genisys",
+
+ "genre" : "SciFi",
+
+ "description" : "When John Connor, leader of the human resistance, sends Sgt. Kyle Reese back to 1984 to protect Sarah Connor and safeguard the future, an unexpected turn of events creates a fractured timeline."
+
+}
+
+shut down nodemon
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>npm install monk -g
+//start again
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>nodemon
+
+add code in app.js
+var videosRouter = require('./routes/videos');
+app.use('/api/videos', videosRouter);
+
+creat videos.js in routes
+for restful router
+```
+var express = require('express');
+var router = express.Router();
+var monk = require('monk');
+var db = monk('localhost:27017/vidzy');
+router.get('/', function(req, res) {
+	var collection = db.get('videos');
+	collection.find({}, function(err, videos){
+		if (err) throw err;
+	  	res.json(videos);
+	});
+});
+
+router.get('/:id', function(req, res) {
+	var collection = db.get('videos');
+	collection.findOne({ _id: req.params.id }, function(err, video){
+		if (err) throw err;
+	  	res.json(video);
+	});
+});
+
+module.exports = router;
+```
+
+
+//CURD 
+C:\Users\dryad\OneDrive\Desktop\program\node\Vidzy>npm install ejs -g
+//if got install problem
+npm install ejs --save
