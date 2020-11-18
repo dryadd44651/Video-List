@@ -39,6 +39,7 @@ router.get('/videos', async function(req, res) {
 	});
 });
 //new video
+// '/videos/new' must in front of '/videos/:id' (prevent new being recognized as :id)
 router.get('/videos/new', function(req, res) {
   res.render('new');
 });
