@@ -43,7 +43,7 @@ router.get('/videos', async function(req, res) {
 router.get('/videos/new', function(req, res) {
   res.render('new');
 });
-
+//Dynamic api should be on bottom (:id)
 router.get('/videos/:id', function(req, res) {
 	var collection = db.get('videos');
 	collection.findOne({ _id: req.params.id }, function(err, video){
